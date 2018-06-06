@@ -1,0 +1,9 @@
+mysql-ctl start
+
+https://organizador-de-tarefas-jhonhsilva.c9users.io/phpmyadmin
+
+Como dar Commit:
+git remote add origin https://github.com/JhonhSilva/organizador-de-tarefas
+git add .
+git commit -m "Nome do seu commit"
+git push -u origin master
