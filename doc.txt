@@ -7,3 +7,17 @@ git remote add origin https://github.com/JhonhSilva/organizador-de-tarefas
 git add .
 git commit -m "Nome do seu commit"
 git push -u origin master
+
+////////////////////////////////////
+
+Telas
+
+Home - Login
+Cadastrar - Fazer cadastro
+
+Tarefas - onde dá pra ver todas as tarefas do usuário
+	criar tarefa
+	atualizar tarefa (descricao e status)
+	excluir tarefa
+	
+asdasd
