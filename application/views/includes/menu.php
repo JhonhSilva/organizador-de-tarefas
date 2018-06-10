@@ -12,6 +12,7 @@
                         </form>
                         <ul class="nav pull-right">
                             <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <?php if ($this->session->userdata('logado')) { echo $this->session->userdata('nome'); } ?>
                                 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">Your Profile</a></li>
@@ -39,7 +40,7 @@
                                 </a></li>
                                 <li><a href="message.html"><i class="menu-icon icon-inbox"></i>Inbox <b class="label green pull-right">
                                     11</b> </a></li>
-                                <li><a href="task.html"><i class="menu-icon icon-tasks"></i>Tasks <b class="label orange pull-right">
+                                <li><a href="/usuario/tarefas"><i class="menu-icon icon-tasks"></i>Tasks <b class="label orange pull-right">
                                     19</b> </a></li>
                             </ul>
                             <!--/.widget-nav-->

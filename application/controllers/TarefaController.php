@@ -60,4 +60,31 @@ class TarefaController extends CI_Controller {
 		$this->load->view('Tarefa', $arrayTarefas);
 		$this->load->view('includes/footer');
 	}
+		
+	/*
+		Filtra tarefas com base no status_id da tarefa,
+		o status é passado pelo dropdown da pagina de tarefas
+		
+		Gabriel Craveiro
+	*/
+	public function filtrarTarefas() {
+		$this->verificar_sessao();
+		
+		$usuario_id = $this->session->userdata('usuario_id');
+		$tipoFiltragem = $this->uri->segment(3);
+		
+		$tabela = "tarefa";
+		
+		
+		if ($tipoFiltragem == 0) {
+			$arrayTarefas['tarefas'] = $this->Tarefa_model->getTarefas($usuario_id, $tabela);
+		} else {
+			$arrayTarefas['tarefas'] = $this->Tarefa_model->filtrarTarefas($usuario_id, $tabela, $tipoFiltragem);
+		}
+
+		$this->load->view('includes/header');
+		$this->load->view('includes/menu');
+		$this->load->view('Tarefa', $arrayTarefas);
+		$this->load->view('includes/footer');
+	}
 }

@@ -1,6 +1,7 @@
 		</div><!--/.container-->
 	</div><!--/.wrapper-->
 	
+	
         <script src="/assets/scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
         <script src="/assets/scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
         <script src="/assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -8,5 +9,19 @@
         <script src="/assets/scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
         <script src="/assets/scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="/assets/scripts/common.js" type="text/javascript"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('tr').click(
+				function() 
+				{
+					$(this).toggleClass('resolved');
+				}
+			);
+		} );
+	</script>      
       
+
     </body>

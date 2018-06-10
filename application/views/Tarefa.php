@@ -3,23 +3,20 @@
 
 						<div class="module message">
 							<div class="module-head">
-								<h3>Task Management Tool</h3>
+								<h3>Controle de tarefas</h3>
 							</div>
 							<div class="module-option clearfix">
 								<div class="pull-left">
-									Filter : &nbsp;
+									Filtro : &nbsp;
 									<div class="btn-group">
-										<button class="btn">All</button>
+										<button class="btn">Todas</button>
 										<button class="btn dropdown-toggle" data-toggle="dropdown">
 											<span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu">
-											<li><a href="#">All</a></li>
-											<li><a href="#">In Progress</a></li>
-											<li><a href="#">Done</a></li>
-											<li class="divider"></li>
-											<li><a href="#">New task</a></li>
-											<li><a href="#">Overdue Task</a></li>
+											<li><a <a href="<?= base_url('tarefa/filtrar/') . 0 ?>">Todas</a></li>
+											<li><a <a href="<?= base_url('tarefa/filtrar/') . 1 ?>">Em Progresso</a></li>
+											<li><a <a href="<?= base_url('tarefa/filtrar/') . 2 ?>">Feitas</a></li>
 										</ul>
 									</div>
 								</div>
@@ -36,15 +33,16 @@
 											<td class="cell-title">Tarefas</td>
 											<td class="cell-status hidden-phone hidden-tablet">Status</td>
 											<td class="cell-time align-right">Data de Entrega</td>
+											<td class="cell-time align-right">Deletar Tarefa</td>
 										</tr>
-										<?php if (empty($tarefas)) : ?>
+										<?php if (empty($tarefas)) { ?>
 											<tr class="task">
-    											<td class="cell-icon"></td>
+    											<td class="cell-icon" style="width: 20px"></td>
     											<td class="cell-title"><div>Nenhuma tarefa encontrada</div></td>
     											<td class="cell-status hidden-phone hidden-tablet"></td>
     											<td class="cell-time align-right"></td>
     										</tr>
-                                        <?php endif; ?>
+                                        <?php } else { ?>
                                         <?php foreach ($tarefas as $tarefa) : ?>
                                             <tr class="task <?php echo $tarefa['status_id'] == 1 ? 'resolved' : '' ?>">
                                                 
@@ -55,18 +53,23 @@
     											<td class="cell-title"><div> <?= $tarefa['tarefa_descricao'] ?></div></td>
     											<td class="cell-title">
     											    <?php if ($tarefa['status_id'] == '2') { ?>
-    											         <b class="alert alert-info">
+    											         <b class="btn alert-info">
     											         Pendente
     											         </b>
     											    <?php } else { ?>
-    											        <b class="alert alert-success">
+    											        <b class="btn alert-success">
     											            Concluida
     											        </b>
     											        <?php } ?>
     											 </td>
     											<td class="cell-time align-right"><?= $tarefa['tarefa_data_termino'] ?></td>
+    											<td class="cell-time align-right">
+    											    <p  id="delete-btn" class="" title="Atualizar">
+                                                        X    
+                                                    </p>
+    											</td>
 										    </tr>
-                                        <?php endforeach; ?>
+                                        <?php endforeach; }  ?>
 									</tbody>
 								</table>
 
@@ -79,11 +82,37 @@
 					</div><!--/.content-->
 				</div><!--/.span9-->
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>
-function editData(id)
-{
-    $("#id").val(id);
-    document.frmEdit.submit();    
-}
+   document.getElementById("delete-btn").addEventListener("click", function (event)
+            {
+                swal({
+                    title: "Você deseja deletar a tarefa?",
+                    text: "Você não pode recuperar uma tarefa deletada!",
+                    icon: "warning",
+                    buttons: {
+                        cancel: {
+                            visible: true,
+                            text: "Não, desejo voltar!",
+                            closeModal: false,
+                        },
+                        confirm: {
+                            text: "Sim, delete!",
+                            className: "doit",
+                            closeModal: false,
+                        },
+                    },
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal("!", "Sua tarefa foi deletada", "success")
+                                .then(() => {
+                                    window.location.href = "<?= base_url('tarefa/deletar/') . $tarefa['tarefa_id'] ?>";
+                                });
+                    } else {
+                          swal("Cancelado", "Sua tarefa está a salvo :)", "error");
+                    }
+                });
+            });
 </script>

@@ -13,6 +13,8 @@
         <link type="text/css" href="/assets/images/icons/css/font-awesome.css" rel="stylesheet">
         <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
             rel='stylesheet'>
+            
+        <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
 
   </head>
 
