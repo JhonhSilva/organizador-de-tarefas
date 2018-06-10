@@ -7,3 +7,16 @@
   
   display: none;
 }
+
+.alert-info b {
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #3a87ad;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    display: inline-block;
+    padding: 1px 5px;
+    font-size: 11px;
+    text-transform: uppercase;
+}

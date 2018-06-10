@@ -33,9 +33,9 @@
 									<tbody>
 										<tr class="heading">
 											<td class="cell-icon"></td>
-											<td class="cell-title">Task</td>
+											<td class="cell-title">Tarefas</td>
 											<td class="cell-status hidden-phone hidden-tablet">Status</td>
-											<td class="cell-time align-right">Due Date</td>
+											<td class="cell-time align-right">Data de Entrega</td>
 										</tr>
 										<?php if (empty($tarefas)) : ?>
 											<tr class="task">
@@ -46,15 +46,23 @@
     										</tr>
                                         <?php endif; ?>
                                         <?php foreach ($tarefas as $tarefa) : ?>
-                                            <tr class="task">
-    											<td class="cell-icon"><i class="icon-checker"></i></td>
+                                            <tr class="task <?php echo $tarefa['status_id'] == 1 ? 'resolved' : '' ?>">
+                                                
+                                                <td class="cell-icon" style="width: 20px"><a href="<?= base_url('tarefa/atualizar/') . $tarefa['tarefa_id'] . '/' . $tarefa['status_id'] ?>" class="" title="Atualizar"><span data-feather="edit"></span>
+                                                    <i class="icon-checker high"></i>
+                                                     </a>
+                                                </td>
     											<td class="cell-title"><div> <?= $tarefa['tarefa_descricao'] ?></div></td>
-    											<td class="cell-status hidden-phone hidden-tablet">
+    											<td class="cell-title">
     											    <?php if ($tarefa['status_id'] == '2') { ?>
-    											         <b class="due">
-    											             Atrasado
+    											         <b class="alert alert-info">
+    											         Pendente
     											         </b>
-    											    <?php } ?>
+    											    <?php } else { ?>
+    											        <b class="alert alert-success">
+    											            Concluida
+    											        </b>
+    											        <?php } ?>
     											 </td>
     											<td class="cell-time align-right"><?= $tarefa['tarefa_data_termino'] ?></td>
 										    </tr>
@@ -70,4 +78,12 @@
 						
 					</div><!--/.content-->
 				</div><!--/.span9-->
-				
+
+
+<script>
+function editData(id)
+{
+    $("#id").val(id);
+    document.frmEdit.submit();    
+}
+</script>
