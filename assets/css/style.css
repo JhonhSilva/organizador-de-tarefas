@@ -20,3 +20,13 @@
     font-size: 11px;
     text-transform: uppercase;
 }
+
+.message .table-message thead tr.heading td, .message .table-message tbody tr.heading td {
+    background: #333!important;
+    font-weight: bold;
+    border: 0;
+}
+
+.message .table-message tbody td.cell-time {
+    width: 120px;
+}

@@ -56,7 +56,7 @@ class TarefaController extends CI_Controller {
     	$arrayTarefas['tarefas'] = $this->Tarefa_model->getTarefas($usuario_id, $tabela);
     	
 		$this->load->view('includes/header');
-		$this->load->view('includes/menu');
+		$this->load->view('includes/menu', $arrayTarefas);
 		$this->load->view('Tarefa', $arrayTarefas);
 		$this->load->view('includes/footer');
 	}
@@ -83,8 +83,25 @@ class TarefaController extends CI_Controller {
 		}
 
 		$this->load->view('includes/header');
-		$this->load->view('includes/menu');
+		$this->load->view('includes/menu', $arrayTarefas);
 		$this->load->view('Tarefa', $arrayTarefas);
 		$this->load->view('includes/footer');
+	}
+	/*
+		Deleta uma tarefa após confirmação,
+		é feito a deleção com base na id da tarefa
+		
+		Gabriel Craveiro
+	*/
+	public function deletarTarefa() {
+		$this->verificar_sessao();
+
+		$tarefa_id = $this->uri->segment(3);
+
+		$tabela = "tarefa";
+
+		$this->Tarefa_model->deletarTarefa($tarefa_id, $tabela);
+		
+		redirect('usuario/tarefas');
 	}
 }

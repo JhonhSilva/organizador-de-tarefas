@@ -21,10 +21,10 @@
 									</div>
 								</div>
 								<div class="pull-right">
-									<a href="#" class="btn btn-primary">Create Task</a>
+									<a href="#" class="btn btn-primary">Criar Tarefa</a>
 								</div>
 							</div>
-							<div class="module-body table">								
+							<div class="module-body table">				
 
 								<table class="table table-message">
 									<tbody>
@@ -35,7 +35,7 @@
 											<td class="cell-time align-right">Data de Entrega</td>
 											<td class="cell-time align-right">Deletar Tarefa</td>
 										</tr>
-										<?php if (empty($tarefas)) { ?>
+										<?php if ($tarefas[0]['total'] == 0) { ?>
 											<tr class="task">
     											<td class="cell-icon" style="width: 20px"></td>
     											<td class="cell-title"><div>Nenhuma tarefa encontrada</div></td>

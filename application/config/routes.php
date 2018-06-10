@@ -53,5 +53,13 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['default_controller'] = 'LoginController/Get';
+
+$route['usuario/home'] = 'LoginController/Get';
 $route['usuario/logar'] = 'LoginController/Logar';
+$route['usuario/tarefas'] = 'TarefaController/Get';
 $route['usuario/cadastrar'] = 'LoginController/Cadastrar';
+
+$route['tarefa/atualizar/(:num)/(:num)'] = 'TarefaController/concluir/$1/$2';
+$route['tarefa/filtrar/(:num)'] = 'TarefaController/filtrarTarefas/$1';
+$route['tarefa/deletar/(:num)'] = 'TarefaController/deletarTarefa/$1';
+
