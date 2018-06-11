@@ -21,7 +21,7 @@
 									</div>
 								</div>
 								<div class="pull-right">
-									<p id="criar-tarefa" class="btn btn-primary">Criar Tarefa</p>
+								    <a href="<?= base_url('tarefa/cadastrar/') ?>" class="btn btn-primary">Criar Tarefa</a>
 								</div>
 							</div>
 							<div class="module-body table">				
@@ -63,8 +63,8 @@
     											        <?php } ?>
     											 </td>
     											<td class="cell-time align-right"><?= $tarefa['tarefa_data_termino'] ?></td>
-    											<td class="cell-time align-right">
-    											    <p  id="delete-btn" class="" title="Atualizar">
+    											<td class="cell-time align-right" class="delete-btn">
+    											    <p  class="delete-btn" class="" title="Atualizar">
                                                         X    
                                                     </p>
     											</td>
@@ -83,12 +83,13 @@
 				</div><!--/.span9-->
 
 <script src="https://unpkg.com/sweetalert2@7.22.2/dist/sweetalert2.all.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 
 <script>
-   document.getElementById("delete-btn").addEventListener("click", function (event)
+    var btns = document.querySelectorAll(".delete-btn");
+    
+    Array.from(btns).map(x => {
+	x.addEventListener("click", function (event)
         {
             swal({
                     title: "Você deseja deletar a tarefa?",
@@ -109,8 +110,9 @@
                   }
 				})
             });
+})
 </script>
-
+<!--
 
 <script>
 	  document.getElementById("criar-tarefa").addEventListener("click", function (event)
@@ -149,7 +151,7 @@ swal.mixin({
 ]).then((result) => {
   if (result.value) {
     swal("!", "Sua tarefa foi criada com sucesso", "success")
-    .then(() => { window.location.href = "<?= base_url('tarefa/criar/')?>" + result.value[0] + '/' + encodeURI(result.value[1]);});
+    .then(() => { "<?= base_url('tarefa/criar/')?>" + result.value[0] + '/' + encodeURI(result.value[1]);});
   }
 })
 
@@ -157,4 +159,4 @@ swal.mixin({
 
         	
         })
-</script>
+</script>-->

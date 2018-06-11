@@ -30,3 +30,30 @@
 .message .table-message tbody td.cell-time {
     width: 120px;
 }
+/*
+.ui-widget.ui-widget-content {
+    margin: auto;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+    background: none; 
+    font-weight: thin;
+    color: #555555;
+    border: 0.3px solid #eee;
+}
+
+.ui-widget-header {
+    border: none; 
+    background: none; 
+    color: #222222; 
+    font-weight: normal;
+}
+
+.ui-state-hover, ui-datepicker-next-hover {
+  background: none!important;
+  border: none;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+    background: #bbb!important;
+}*/
