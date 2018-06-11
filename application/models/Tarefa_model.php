@@ -7,8 +7,32 @@ class Tarefa_model extends CI_Model {
 
        Gabriel Craveiro
     */
-    public function getTarefas($usuario_id, $tabela)
-    {
+    public function getTarefas($usuario_id, $tabela) {
+        if (isset($usuario_id) && isset($tabela))
+        {
+            $this->db->where('usuario_id', $usuario_id); 
+            $this->db->order_by('tarefa_id desc');
+            $this->db->order_by('status_id desc');
+            
+            $query = $this->db->get($tabela);
+
+
+            if ($query->num_rows() > 0)
+            {
+                return $query->result_array();
+            } else
+            {
+                return NULL;
+            }
+        }
+        return FALSE;
+    }
+    
+    /* 
+        Retorna total de tarefas
+    */
+    
+    public function getCount($usuario_id, $tabela) {
         if (isset($usuario_id) && isset($tabela))
         {
             $select =   array(
@@ -17,10 +41,9 @@ class Tarefa_model extends CI_Model {
             );  
             $this->db->select($select);
             $this->db->where('usuario_id', $usuario_id); 
-            $this->db->order_by('tarefa_id desc');
-            
+
             $query = $this->db->get($tabela);
-            
+
 
             if ($query->num_rows() > 0)
             {
@@ -116,4 +139,18 @@ class Tarefa_model extends CI_Model {
         }
         return FALSE;
     }
+    
+	/*
+		Cria uma tarefa com base na descrição e datas passadas
+		
+		Gabriel Craveiro
+	*/
+	
+	public function criarTarefa($tabela, $dados) {
+        if (isset($tabela) && is_array($dados))
+        {
+            return $this->db->insert($tabela, $dados);
+        }
+        return FALSE;
+	}
 }
