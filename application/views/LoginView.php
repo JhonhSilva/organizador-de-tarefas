@@ -15,7 +15,7 @@
 				
 					<ul class="nav pull-right">
 
-						<li><a href="#">
+						<li><a href="usuario/cadastro">
                         Cadastrar
                         </a></li>
 					</ul>
