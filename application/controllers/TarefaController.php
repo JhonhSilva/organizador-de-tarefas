@@ -61,6 +61,26 @@ class TarefaController extends CI_Controller {
 		$this->load->view('includes/footer');
 		
 	}
+	
+	/*
+		Função para retornar a página de cadastro.
+
+	*/
+	public function GetCadastrar()
+	{
+		$this->verificar_sessao();
+
+    	$usuario_id = $this->session->userdata('usuario_id');
+    	$tabela = "tarefa";
+    	
+    	$arrayTarefas['tarefas'] = $this->Tarefa_model->getTarefas($usuario_id, $tabela);
+
+		$this->load->view('includes/header');
+		$this->load->view('includes/menu', $arrayTarefas);
+		$this->load->view('CriarTarefa', $arrayTarefas);
+		$this->load->view('includes/footer');
+		
+	}
 		
 	/*
 		Filtra tarefas com base no status_id da tarefa,
@@ -142,5 +162,35 @@ class TarefaController extends CI_Controller {
 		// $this->Tarefa_model->criarTarefa($tabela, $dados);
 		
 		$this->db->insert($tabela, $dados);
+	}
+	
+	/*
+		Cadastra uma tarefa com base na descrição e datas passadas
+		
+		Gabriel Craveiro
+	*/
+	
+	public function cadastrarTarefa() {
+		$this->verificar_sessao();
+		
+		$usuario_id = $this->session->userdata('usuario_id');
+		$nome = $this->input->post("nomeTarefa");
+        $dataEntrega = $this->input->post("dataEntrega");
+        
+		$dataCriacao = date('Y-m-d');
+		
+		$tabela = "tarefa";
+		
+		$dados = array(
+			'usuario_id' => $usuario_id,
+			'tarefa_descricao' => $nome,
+			'tarefa_data_termino' => $dataEntrega,
+			'status_id' => 2,
+			'tarefa_data_de_criacao' => $dataCriacao
+		);
+
+		$this->Tarefa_model->criarTarefa($tabela, $dados);
+		
+		redirect('usuario/tarefas');
 	}
 }
