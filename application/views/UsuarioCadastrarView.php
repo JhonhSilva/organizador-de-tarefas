@@ -1,5 +1,15 @@
 <body>
-
+	
+	<script>
+		function Validate() {
+			if (document.getElementById('inputPassword').value === document.getElementById('inputPassword2').value)
+				return true;
+			else
+				alert('Senhas não são iguais!')
+				return false;
+		}
+	</script>
+	
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -30,7 +40,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="module module-login span4 offset4">
-					<form class="form-vertical" method="POST" action="<?= base_url('usuario/cadastrar') ?>">
+					<form class="form-vertical" method="POST" action="<?= base_url('usuario/cadastrar') ?>" onsubmit="return Validate()">
 						<div class="module-head">
 							<h3>Cadastrar Usuário</h3>
 						</div>
@@ -47,7 +57,7 @@
 							</div>
 							<div class="control-group">
 								<div class="controls row-fluid">
-									<input class="span12" type="password" id="inputPassword" name="senha2" placeholder="Confirme a senha" required>
+									<input class="span12" type="password" id="inputPassword2" name="senha2" placeholder="Confirme a senha" required>
 								</div>
 							</div>
 						</div>
