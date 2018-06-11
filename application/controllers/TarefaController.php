@@ -49,16 +49,17 @@ class TarefaController extends CI_Controller {
 	public function Get()
 	{
 		$this->verificar_sessao();
-		
+
     	$usuario_id = $this->session->userdata('usuario_id');
     	$tabela = "tarefa";
     	
     	$arrayTarefas['tarefas'] = $this->Tarefa_model->getTarefas($usuario_id, $tabela);
-    	
+
 		$this->load->view('includes/header');
 		$this->load->view('includes/menu', $arrayTarefas);
 		$this->load->view('Tarefa', $arrayTarefas);
 		$this->load->view('includes/footer');
+		
 	}
 		
 	/*
@@ -103,5 +104,43 @@ class TarefaController extends CI_Controller {
 		$this->Tarefa_model->deletarTarefa($tarefa_id, $tabela);
 		
 		redirect('usuario/tarefas');
+	}
+	
+	/*
+		Cria uma tarefa com base na descrição e datas passadas
+		
+		Gabriel Craveiro
+	*/
+	
+	public function criarTarefa() {
+		$this->verificar_sessao();
+		
+		$usuario_id = $this->session->userdata('usuario_id');
+		// $nomeTarefa = $this->uri->segment(3);
+		// $dataTarefa = $this->uri->segment(4) + '/' + $this->uri->segment(5) + '/' + $this->uri->segment(6);
+		// $dataCriacao = date('Y-m-d');
+		
+		$tabela = "tarefa";
+		
+		// $dados = array(
+		// 	'usuario_id' => $usuario_id,
+		// 	'tarefa_descricao' => $nomeTarefa,
+		// 	'tarefa_data_termino' => date('Y-m-d'),
+		// 	'status_id' => 2,
+		// 	'tarefa_data_de_criacao' => $data_criacao
+		// );
+
+		$dados = array([
+			'tarefa_id' => NULL,
+			'tarefa_descricao' => 'trrrrereeste',
+			'tarefa_data_de_criacao' => '2018-06-10',
+			'usuario_id' => '2',
+			'status_id' => '1',
+			'tarefa_data_termino' => '2018-06-10',
+		]);
+		
+		// $this->Tarefa_model->criarTarefa($tabela, $dados);
+		
+		$this->db->insert($tabela, $dados);
 	}
 }

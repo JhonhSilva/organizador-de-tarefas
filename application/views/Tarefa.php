@@ -21,7 +21,7 @@
 									</div>
 								</div>
 								<div class="pull-right">
-									<a href="#" class="btn btn-primary">Criar Tarefa</a>
+									<p id="criar-tarefa" class="btn btn-primary">Criar Tarefa</p>
 								</div>
 							</div>
 							<div class="module-body table">				
@@ -35,7 +35,7 @@
 											<td class="cell-time align-right">Data de Entrega</td>
 											<td class="cell-time align-right">Deletar Tarefa</td>
 										</tr>
-										<?php if ($tarefas[0]['total'] == 0) { ?>
+										<?php if (count($tarefas) == 0) { ?>
 											<tr class="task">
     											<td class="cell-icon" style="width: 20px"></td>
     											<td class="cell-title"><div>Nenhuma tarefa encontrada</div></td>
@@ -82,37 +82,79 @@
 					</div><!--/.content-->
 				</div><!--/.span9-->
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://unpkg.com/sweetalert2@7.22.2/dist/sweetalert2.all.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
 <script>
    document.getElementById("delete-btn").addEventListener("click", function (event)
-            {
-                swal({
+        {
+            swal({
                     title: "Você deseja deletar a tarefa?",
                     text: "Você não pode recuperar uma tarefa deletada!",
-                    icon: "warning",
-                    buttons: {
-                        cancel: {
-                            visible: true,
-                            text: "Não, desejo voltar!",
-                            closeModal: false,
-                        },
-                        confirm: {
-                            text: "Sim, delete!",
-                            className: "doit",
-                            closeModal: false,
-                        },
-                    },
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonText:  "Sim, delete!",
+					cancelButtonText: 'Não, desejo voltar!',
+					reverseButtons: true
                 })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        swal("!", "Sua tarefa foi deletada", "success")
-                                .then(() => {
-                                    window.location.href = "<?= base_url('tarefa/deletar/') . $tarefa['tarefa_id'] ?>";
-                                });
-                    } else {
-                          swal("Cancelado", "Sua tarefa está a salvo :)", "error");
-                    }
-                });
+                .then((result) => {
+				  if (result.value) {
+				    swal("!", "Sua tarefa foi deletada", "success")
+                        .then(() => { window.location.href = "<?= base_url('tarefa/deletar/') . $tarefa['tarefa_id'] ?>";
+                    });
+				  } else {
+                    	swal("Cancelado", "Sua tarefa está a salvo :)", "error");
+                  }
+				})
             });
+</script>
+
+
+<script>
+	  document.getElementById("criar-tarefa").addEventListener("click", function (event)
+        {
+swal.mixin({ 
+  input: 'text',
+  confirmButtonText: 'Next &rarr;',
+  showCancelButton: true,
+  progressSteps: ['1', '2', '3'],
+  reverseButtons: true
+}).queue([
+  
+  {
+  	title: 'Nome da tarefa',
+  	text: 'Escolha um nome para a sua tarefa'
+  },
+  {
+   title: 'Date picker',
+    html: '<div id="datepicker"></div>',
+    onOpen: function() {
+    	$('#datepicker').datepicker({
+            dateFormat: 'yy/mm/dd',
+    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+    nextText: 'Próximo',
+    prevText: 'Anterior'
+      })
+    },
+    preConfirm: function() {
+      return Promise.resolve($('#datepicker').datepicker({ dateFormat: 'dd,MM,yyyy' }).val())
+    }
+  }
+]).then((result) => {
+  if (result.value) {
+    swal("!", "Sua tarefa foi criada com sucesso", "success")
+    .then(() => { window.location.href = "<?= base_url('tarefa/criar/')?>" + result.value[0] + '/' + encodeURI(result.value[1]);});
+  }
+})
+
+
+
+        	
+        })
 </script>
