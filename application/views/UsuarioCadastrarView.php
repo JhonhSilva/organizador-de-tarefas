@@ -15,7 +15,7 @@
 				
 					<ul class="nav pull-right">
 
-						<li><a href="usuario/logar">
+						<li><a href="<?= base_url('usuario/logar') ?>">
                         Login
                         </a></li>
 					</ul>
@@ -30,7 +30,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="module module-login span4 offset4">
-					<form class="form-vertical" method="POST" action="usuario/cadastrar">
+					<form class="form-vertical" method="POST" action="<?= base_url('usuario/cadastrar') ?>">
 						<div class="module-head">
 							<h3>Cadastrar Usuário</h3>
 						</div>

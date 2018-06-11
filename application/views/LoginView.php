@@ -15,7 +15,7 @@
 				
 					<ul class="nav pull-right">
 
-						<li><a href="usuario/cadastro">
+						<li><a href="<?= base_url('usuario/cadastro') ?>">
                         Cadastrar
                         </a></li>
 					</ul>
