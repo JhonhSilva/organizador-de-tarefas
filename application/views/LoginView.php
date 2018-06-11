@@ -37,12 +37,12 @@
 						<div class="module-body">
 							<div class="control-group">
 								<div class="controls row-fluid">
-									<input class="span12" type="email" id="inputEmail" name="login" placeholder="Login">
+									<input class="span12" type="email" id="inputEmail" name="login" placeholder="Login" required>
 								</div>
 							</div>
 							<div class="control-group">
 								<div class="controls row-fluid">
-									<input class="span12" type="password" id="inputPassword" name="senha" placeholder="Senha">
+									<input class="span12" type="password" id="inputPassword" name="senha" placeholder="Senha" required>
 								</div>
 							</div>
 						</div>
