@@ -28,6 +28,7 @@ class Usuario_model extends CI_Model {
     // Jhonathan Silva
     public function insert(Usuario $usuario) {
         $this->db->insert($usuario->getClassName(), $usuario->toArray());
+        return $this->db->insert_id();
     }
     
     // função de seleção de usuário
