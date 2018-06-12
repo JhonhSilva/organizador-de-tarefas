@@ -9,7 +9,6 @@
         <script src="/assets/scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
         <script src="/assets/scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="/assets/scripts/common.js" type="text/javascript"></script>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
         
 	<script type="text/javascript">

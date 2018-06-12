@@ -60,6 +60,9 @@ $route['usuario/tarefas'] = 'TarefaController/Get';
 $route['usuario/cadastro'] = 'UsuarioController/Get';
 $route['usuario/cadastrar'] = 'UsuarioController/Cadastrar';
 
+$route['usuario/edicao'] = 'UsuarioController/Edicao';
+$route['usuario/editar'] = 'UsuarioController/Editar';
+
 $route['usuario/logout'] = 'LoginController/Logout';
 
 $route['tarefa/atualizar/(:num)/(:num)'] = 'TarefaController/concluir/$1/$2';

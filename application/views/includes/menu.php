@@ -15,8 +15,7 @@
                                 <?php if ($this->session->userdata('logado')) { echo $this->session->userdata('nome'); } ?>
                                 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Seu Perfil</a></li>
-                                    <li><a href="#">Editar Perfil</a></li>
+                                    <li><a href="<?= base_url('usuario/edicao') ?>">Editar Perfil</a></li>
                                     <li class="divider"></li>
                                     <li><a href="/usuario/logout">Logout</a></li>
                                 </ul>
@@ -35,7 +34,7 @@
                     <div class="span3">
                         <div class="sidebar">
                             <ul class="widget widget-menu unstyled">
-                                <li class="active"><a href="index.html"><i class="menu-icon icon-dashboard"></i>Painel de Admin
+                                <li class="active"><a href="index.html"><i class="menu-icon icon-dashboard"></i>Editar Perfil
                                 </a></li>
                                 <!--<li><a href="message.html"><i class="menu-icon icon-inbox"></i>Inbox <b class="label green pull-right">
                                   <?= $tarefas[0]['tarefasHoje'] ?> </b> </a></li> --> 

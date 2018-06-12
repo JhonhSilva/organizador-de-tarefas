@@ -1,5 +1,5 @@
 <body>
-
+	
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -7,7 +7,7 @@
 					<i class="icon-reorder shaded"></i>
 				</a>
 
-			  	<a class="brand" href="index.html">
+			  	<a class="brand" href="usuario/tarefas">
 			  		Organizador de Tarefas
 			  	</a>
 
@@ -30,7 +30,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="module module-login span4 offset4">
-					<form class="form-vertical" method="POST" action="usuario/logar">
+					<form class="form-vertical" method="POST" action="<?= base_url('usuario/logar') ?>">
 						<div class="module-head">
 							<h3>Entrar</h3>
 						</div>

@@ -15,13 +15,13 @@
 										</button>
 										<ul class="dropdown-menu">
 											<li><a <a href="<?= base_url('tarefa/filtrar/') . 0 ?>">Todas</a></li>
-											<li><a <a href="<?= base_url('tarefa/filtrar/') . 1 ?>">Em Progresso</a></li>
-											<li><a <a href="<?= base_url('tarefa/filtrar/') . 2 ?>">Feitas</a></li>
+											<li><a <a href="<?= base_url('tarefa/filtrar/') . 2 ?>">Em Progresso</a></li>
+											<li><a <a href="<?= base_url('tarefa/filtrar/') . 1 ?>">Feitas</a></li>
 										</ul>
 									</div>
 								</div>
 								<div class="pull-right">
-								    <a href="<?= base_url('tarefa/cadastrar/') ?>" class="btn btn-primary">Criar Tarefa</a>
+								    <a href="<?= base_url('tarefa/getAdicionar/') ?>" class="btn btn-primary">Criar Tarefa</a>
 								</div>
 							</div>
 							<div class="module-body table">				
@@ -31,9 +31,10 @@
 										<tr class="heading">
 											<td class="cell-icon"></td>
 											<td class="cell-title">Tarefas</td>
-											<td class="cell-status hidden-phone hidden-tablet">Status</td>
 											<td class="cell-time align-right">Data de Entrega</td>
+											<td class="cell-status hidden-phone hidden-tablet">Status</td>
 											<td class="cell-time align-right">Deletar Tarefa</td>
+											<td class="cell-time align-right">Editar Tarefa</td>
 										</tr>
 										<?php if (count($tarefas) == 0) { ?>
 											<tr class="task">
@@ -51,10 +52,11 @@
                                                      </a>
                                                 </td>
     											<td class="cell-title"><div> <?= $tarefa['tarefa_descricao'] ?></div></td>
+    											<td class="cell-time align-right"><?= $tarefa['tarefa_data_termino'] ?></td>
     											<td class="cell-title">
     											    <?php if ($tarefa['status_id'] == '2') { ?>
     											         <b class="btn alert-info">
-    											         Pendente
+    											         Para fazer
     											         </b>
     											    <?php } else { ?>
     											        <b class="btn alert-success">
@@ -62,11 +64,19 @@
     											        </b>
     											        <?php } ?>
     											 </td>
-    											<td class="cell-time align-right"><?= $tarefa['tarefa_data_termino'] ?></td>
     											<td class="cell-time align-right" class="delete-btn">
-    											    <p  class="delete-btn" class="" title="Atualizar">
-                                                        X    
-                                                    </p>
+    											    <?php if ($tarefa['status_id'] == 2) { ?>
+        											    <p  class="delete-btn" class="" title="Atualizar">
+                                                            X    
+                                                        </p>
+                                                    <?php } ?>
+    											</td>
+    											<td class="cell-time align-right" class="delete-btn">
+    											    <?php if ($tarefa['status_id'] == 2) { ?>
+        											    <p  class="" class="" title="Atualizar">
+                                                            <a href="<?= base_url('tarefa/getEditar/') . $tarefa['tarefa_id'] . '/' . $tarefa['tarefa_descricao']?>">Editar Tarefa</a>
+                                                        </p>
+                                                    <?php } ?>
     											</td>
 										    </tr>
                                         <?php endforeach; }  ?>
