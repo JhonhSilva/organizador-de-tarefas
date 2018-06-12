@@ -46,7 +46,7 @@
         public function toArray(){
             $aux = array();
             $aux["nome"] = $this->nome;
-            $aux["login"] = $this->login;
+            $aux["email"] = $this->email;
             $aux["senha"] = $this->senha;
             return $aux;
         }
