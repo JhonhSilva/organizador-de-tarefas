@@ -1,10 +1,10 @@
 <?php
-    class Aluno {
+    class Usuario {
         private $id, $nome, $email, $senha;
         
-        // contrutor da classe Aluno
+        // contrutor da classe Usuario
         // Jhonathan Silva
-        public function Aluno($nome, $email, $senha, $id=0) {
+        public function Usuario($nome, $email, $senha, $id=0) {
             $this->id = $id;
             $this->nome = $nome;
             $this->email = $email;
@@ -40,7 +40,5 @@
         public function isValido() {
             return $this->nome != "" && $this->email != "" && $this->senha != "";
         }
-        
-        
     }
 ?>
