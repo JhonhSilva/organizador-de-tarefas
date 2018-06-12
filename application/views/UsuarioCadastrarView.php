@@ -52,7 +52,7 @@
 							</div>
 							<div class="control-group">
 								<div class="controls row-fluid">
-									<input class="span12" type="email" id="inputEmail" name="login" placeholder="Login" required>
+									<input class="span12" type="email" id="inputEmail" name="email" placeholder="Email" required>
 								</div>
 							</div>
 							<div class="control-group">
