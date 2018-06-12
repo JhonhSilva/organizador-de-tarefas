@@ -16,5 +16,11 @@
         public function getId() {
             return $this->id;
         }
+        
+        // getter do atributo nome
+        // Jhonathan Silva
+        public function getNome() {
+            return $this->nome;
+        }
     }
 ?>
