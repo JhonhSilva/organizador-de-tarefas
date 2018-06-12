@@ -2,23 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Usuario_model extends CI_Model {
+    
+    /* Realiza o login do usuário com base no login e senhaID
 
-	private $email, $senha, $id;
-    
-    public function Usuario($nome, $senha, $id=0){
-        $this->nome = $nome;
-        $this->senha = $senha;
-        $this->id = $id;
-    }
-    
-    public function toArray(){
-        $aux = array();
-        $aux["email"] = $this->email;
-        $aux["senha"] = $this->senha;
-        $aux["id"] = $this->id;
-        return $aux;
-    }
-    
+       Gabriel Craveiro
+    */
     public function login($login, $senha, $tabela)
     {
         if (isset($login) && isset($senha) && isset($tabela))
@@ -34,5 +22,11 @@ class Usuario_model extends CI_Model {
             return NULL;
         }
         return FALSE;
+    }
+    
+    // função de inserção de usuário
+    // Jhonathan Silva
+    public function insert($usuario) {
+        $this->db->insert($usuario->getClassName(), $usuario->toArray());
     }
 }
