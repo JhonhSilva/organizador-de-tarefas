@@ -28,5 +28,11 @@
         public function getEmail() {
             return $this->email;
         }
+        
+        // getter do atributo senha
+        // Jhonathan Silva
+        public function getSenha() {
+            return $this->senha;
+        }
     }
 ?>
