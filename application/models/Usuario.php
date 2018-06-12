@@ -40,5 +40,15 @@
         public function isValido() {
             return $this->nome != "" && $this->email != "" && $this->senha != "";
         }
+        
+        // gera array com valores das propriedades do objeto
+        // Jhonathan Silva
+        public function toArray(){
+            $aux = array();
+            $aux["nome"] = $this->nome;
+            $aux["login"] = $this->login;
+            $aux["senha"] = $this->senha;
+            return $aux;
+        }
     }
 ?>
