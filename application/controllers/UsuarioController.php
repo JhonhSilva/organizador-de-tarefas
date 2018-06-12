@@ -31,7 +31,6 @@ class UsuarioController extends CI_Controller {
 	    $email = $this->input->post("email");
 	    $senha = $this->input->post("senha");
 	    
-
         $this->form_validation->set_rules('email', 'email', 'is_unique[usuario.usuario_email]');
 	    
 	    if (!$this->form_validation->run()) {
@@ -40,18 +39,21 @@ class UsuarioController extends CI_Controller {
 		} else {
 	    	if(isset($nome) and isset($email) and isset($senha)) {
 		    	$usuario = new Usuario($nome, $email, $senha);
-		    	$this->Usuario_model->insert($usuario);
+		    	$id = $this->Usuario_model->insert($usuario);
 		    	
 		    	$dados = array();
-		    	$dados['login'] = $usuario->getEmail();
-		    	$dados['senha'] = $usuario->getSenha();
+		    	$dados['logado'] = TRUE;
+		    	$dados['nome'] = $usuario->getNome();
+		    	$dados['usuario_id'] = $id;
+
+            	$this->session->set_userdata($dados);
 		    	
-		    	redirect('usuario/logar', $dados);
+		    	redirect('usuario/tarefas');
 			}
 	    }
     }
     
-    // função para editar usuário
+    // função para renderização da página de edição de usuário
     // Jhonathan Silva
     public function Edicao() {
     	
@@ -71,4 +73,21 @@ class UsuarioController extends CI_Controller {
     		echo "<h1>Deu ruim!</h1>";
     	}
     }
+    
+    // função para editar usuário
+    // Jhonathan Silva
+    public function Editar() {
+    	$nome = $this->input->post("nome");
+	    $email = $this->input->post("email");
+	    $senha = $this->input->post("senha");
+	    
+    	if(isset($nome) and isset($email) and isset($senha)) {
+    		$id = $this->session->userdata['usuario_id'];
+	    	$usuario = new Usuario($nome, $email, $senha, $id);
+	    	$this->Usuario_model->update($usuario);
+	    	redirect('usuario/tarefas');
+		}
+	    
+    }
+    
 }
