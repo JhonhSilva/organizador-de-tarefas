@@ -22,5 +22,11 @@
         public function getNome() {
             return $this->nome;
         }
+        
+        // getter do atributo email
+        // Jhonathan Silva
+        public function getEmail() {
+            return $this->email;
+        }
     }
 ?>
