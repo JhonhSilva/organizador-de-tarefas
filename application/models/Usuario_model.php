@@ -26,7 +26,7 @@ class Usuario_model extends CI_Model {
     
     // função de inserção de usuário
     // Jhonathan Silva
-    public function insert($usuario) {
+    public function insert(Usuario $usuario) {
         $this->db->insert($usuario->getClassName(), $usuario->toArray());
     }
     
@@ -43,5 +43,14 @@ class Usuario_model extends CI_Model {
             $row = $query->row_array();
             return $row;
         }
+    }
+    
+    // função de atualização de usuário
+    // Jhonathan Silva
+    public function update(Usuario $usuario) {
+        $this->db->set('usuario_nome', $usuario->getNome());
+        $this->db->set('usuario_senha', $usuario->getSenha());
+        $this->db->where('usuario_id', $usuario->getId());
+        return $this->db->update(Usuario::getClassName());
     }
 }
