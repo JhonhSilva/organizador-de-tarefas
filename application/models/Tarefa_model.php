@@ -153,4 +153,19 @@ class Tarefa_model extends CI_Model {
         }
         return FALSE;
 	}
+	
+	/*
+		Edita uma tarefa com base no id da tarefa e os dados passados pela view
+		
+		Gabriel Craveiro
+	*/
+	
+	public function editarTarefa($tabela, $dados, $tarefa_id) {
+        if (isset($tabela) && is_array($dados) && isset($tarefa_id))
+        {
+            $this->db->where('tarefa_id', $tarefa_id);
+            return $this->db->update($tabela, $dados);        
+        }
+        return FALSE;
+	}
 }

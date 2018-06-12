@@ -63,7 +63,9 @@ $route['usuario/cadastrar'] = 'UsuarioController/Cadastrar';
 $route['tarefa/atualizar/(:num)/(:num)'] = 'TarefaController/concluir/$1/$2';
 $route['tarefa/filtrar/(:num)'] = 'TarefaController/filtrarTarefas/$1';
 $route['tarefa/deletar/(:num)'] = 'TarefaController/deletarTarefa/$1';
-$route['tarefa/cadastrar'] = 'TarefaController/getCadastrar';
+$route['tarefa/getAdicionar'] = 'TarefaController/getCadastrar';
 $route['tarefa/adicionar'] = 'TarefaController/cadastrarTarefa';
+$route['tarefa/getEditar/(:num)/(:any)'] = 'TarefaController/getEditar/$1/$2';
+$route['tarefa/editar/(:num)'] = 'TarefaController/editarTarefa/$1';
 
 
