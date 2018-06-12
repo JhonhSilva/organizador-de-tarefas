@@ -11,12 +11,17 @@ class LoginController extends CI_Controller {
 
 	public function Get()
 	{
-		
 		$this->load->view('includes/header');
 		$this->load->view('LoginView');
 		$this->load->view('includes/footer');
-
 	}
+	
+    /* 
+      Função para realizar o login passando os dados do formulário
+       da view usuario/login para a model
+
+       Gabriel Craveiro
+    */
 	
 	public function Logar() {
 		$login = $this->input->post("login");
@@ -29,7 +34,7 @@ class LoginController extends CI_Controller {
         if (empty($dadosLogin))
         {
             $this->session->userdata('Email ou senha inválidos');
-            redirect('usuario/logar');
+            redirect('usuario/home');
         } else
         {
             $dados = array(
@@ -45,22 +50,14 @@ class LoginController extends CI_Controller {
     
 	}
 	
-    public function logout()
+	/* 
+	    Função para deslogar removendo a session do usuário e redirecionando para a home
+	    
+	    Gabriel Craveiro
+	*/
+    public function Logout()
     {
         $this->session->sess_destroy();
-        redirect('usuario/logar');
+        redirect('usuario/home','refresh'); 
     }
-	
-	public function Cadastrar() {
-		$user_login = $this->input->post("login");
-        $user_password = $this->input->post("senha");
-        
-        if($user_login != null and $user_password != null) {
-        	echo $user_login;
-			echo $user_password;
-        }
-        else
-	        redirect('usuario/logar', true);
-        	// $this->load->view('LoginView');
-	}
 }
