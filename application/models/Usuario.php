@@ -50,5 +50,11 @@
             $aux["senha"] = $this->senha;
             return $aux;
         }
+        
+        // retorna nome da entidade para persistência
+        // Jhonathan Silva
+        public function getClassName() {
+            return "usuario";
+        }
     }
 ?>
