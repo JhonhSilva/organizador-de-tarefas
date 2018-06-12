@@ -34,5 +34,13 @@
         public function getSenha() {
             return $this->senha;
         }
+        
+        // validador do objeto
+        // Jhonathan Silva
+        public function isValido() {
+            return $this->nome != "" && $this->email != "" && $this->senha != "";
+        }
+        
+        
     }
 ?>
