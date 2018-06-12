@@ -45,15 +45,15 @@
         // Jhonathan Silva
         public function toArray(){
             $aux = array();
-            $aux["nome"] = $this->nome;
-            $aux["email"] = $this->email;
-            $aux["senha"] = $this->senha;
+            $aux["usuario_nome"] = $this->nome;
+            $aux["usuario_email"] = $this->email;
+            $aux["usuario_senha"] = $this->senha;
             return $aux;
         }
         
         // retorna nome da entidade para persistência
         // Jhonathan Silva
-        public function getClassName() {
+        public static function getClassName() {
             return "usuario";
         }
     }
